@@ -64,6 +64,9 @@ class LogStash::Outputs::Redis < LogStash::Outputs::Base
       when "SADD"
         member = event.sprintf(@member)
         @redis.sadd(key, member)
+      when "SREM"
+        member = event.sprintf(@member)
+        @redis.srem(key, member)
       when "HSET"
         field = event.sprintf(@field)
         value = event.sprintf(@value)
